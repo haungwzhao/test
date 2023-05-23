@@ -75,10 +75,15 @@ WSGI_APPLICATION = 'bysmms.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+            'ENGINE': 'django.db.backends.mysql',  #数据库驱动名
+            'NAME': 'mysql', #你的数据库名称
+            'USER': 'root',  # 你的用户名
+            'PASSWORD': '123456', # 你的密码
+            'HOST': '127.0.0.1', #你的IP地址
+            'PORT': '3306',  # 你的端口号
+        }
 }
+
 
 
 # Password validation

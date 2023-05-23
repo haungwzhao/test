@@ -16,12 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from sales.views import listorders, listtest
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # 添加如下的路由记录
     path('sales/', include('sales.urls')),
-    # 测试路径
-    path('test/', listtest),
 ]
