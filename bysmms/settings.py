@@ -25,28 +25,32 @@ SECRET_KEY = 'django-insecure-cr92092ej4v1$!$oq2)k*=7)_tsserqji%)qiem5^8skw4_pij
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.124.1']
+ALLOWED_HOSTS = ['192.168.124.1', 'localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    # 'sales',
+    'django.contrib.admin', #admin站点
+    'django.contrib.auth', #身份认证系统
+    'django.contrib.contenttypes', #内容类型框架
+    'django.contrib.sessions',#会话框架
+    'django.contrib.messages',#消息框架
+    'django.contrib.staticfiles',#静态文件管理框架
+    'sqlcommon.apps.SqlcommonConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # admin界面语言本地化
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'bysmms.urls'
@@ -72,16 +76,21 @@ WSGI_APPLICATION = 'bysmms.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
+"""    'default': {
             'ENGINE': 'django.db.backends.mysql',  #数据库驱动名
-            'NAME': 'mysql', #你的数据库名称
+            'NAME': 'sys', #你的数据库名称
             'USER': 'root',  # 你的用户名
             'PASSWORD': '123456', # 你的密码
             'HOST': '127.0.0.1', #你的IP地址
             'PORT': '3306',  # 你的端口号
         }
+        """
+DATABASES = {
+
+'default': {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': BASE_DIR / 'db.sqlite3',
+}
 }
 
 
